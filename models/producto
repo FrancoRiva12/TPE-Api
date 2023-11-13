@@ -10,10 +10,19 @@ class Producto {
     }
 
     public function obtenerTodos($orden = 'ID', $direccion = 'ASC') {
-        $stmt = $this->pdo->prepare("SELECT * FROM producto ORDER BY $orden $direccion");
-        $stmt->execute();
+        //validamos campo de orden
+        $allowedFields = ['ID', 'Marca', 'Modelo', 'Descripcion', 'Precio'];
+        if (!in_array($orden, $allowedFields)) {
+            throw new Exception('Campo de orden no permitido');
+        }
 
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        try {
+            $stmt = $this->pdo->prepare("SELECT * FROM producto ORDER BY $orden $direccion");
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (Exception $e) {
+            throw new Exception('Error al obtener productos: ' . $e->getMessage());
+        }
     }
 
     public function obtenerPorId($id) {
