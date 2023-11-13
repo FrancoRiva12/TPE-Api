@@ -47,6 +47,14 @@ class ProductoController {
         $orden = isset($_GET['orden']) ? $_GET['orden'] : 'ID';
         $direccion = isset($_GET['direccion']) ? $_GET['direccion'] : 'ASC';
 
+         //validamos que los campos de orden esten correctos
+    $allowedFields = ['ID', 'Marca', 'Modelo', 'Descripcion', 'Precio'];
+    if (!in_array($orden, $allowedFields)) {
+        http_response_code(400);
+        echo json_encode(['error' => 'Campo de orden no permitido']);
+        return;
+    }
+
         $productos = $this->producto->obtenerTodos($orden, $direccion);
 
         echo json_encode($productos);
