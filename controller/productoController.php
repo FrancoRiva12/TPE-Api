@@ -1,7 +1,7 @@
 <?php
 
+require '../config.php';
 require '../models/producto.php';
-require './config.php';
 
 class ProductoController {
     private $producto;

@@ -1,8 +1,8 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
-    RewriteBase /TPE-Web2/
+    RewriteBase /web2/TPE-Api/
 
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^(.*)$ $1.php [QSA,L]
+    RewriteRule ^(.*)$ router.php?action=$1 [QSA,L]
 </IfModule>
