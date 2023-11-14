@@ -32,6 +32,7 @@ Datos requeridos en el cuerpo de la solicitud (JSON)
   "Descripcion": "Placa de video Gigabyte NVIDIA RTX 3080 de 12GB de Memoria",
   "Precio": 300
 }
+
 Ejemplo
 
 POST "Content-Type: application/json" -d '{"Marca": "Nvidia", "Modelo": "RTX 3080", "Descripcion": "Placa de video Gigabyte NVIDIA RTX 3080 de 12GB de Memoria", "Precio": 300}' http://localhost/api/productos
@@ -47,7 +48,7 @@ Datos requeridos en el cuerpo de la solicitud (JSON)
   "Precio": 250
 }
 Ejemplo
- PUT "Content-Type: application/json" -d '{"Marca": "AMD", "Modelo": "RX 6700XT", "Descripcion": "Placa de video Zotac 6700XT de 12GB de Memoria", "Precio": 250}' http://localhost/api/productos/2
+ PUT "Content-Type: application/json" '{"Marca": "AMD", "Modelo": "RX 6700XT", "Descripcion": "Placa de video Zotac 6700XT de 12GB de Memoria", "Precio": 250}' http://localhost/api/productos/2
 
 
 
